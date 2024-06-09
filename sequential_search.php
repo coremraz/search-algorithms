@@ -1,12 +1,23 @@
 <?php
 
-$array = [40, 16, 9, 28, 32, 12, 54, 8, 4, 2];
-$number = 11;
+$array = [40, 16, 9, 28, 32, 12, 54, 8, 4, 2, 56];
+$number = 2;
 
 function sequentialSearch($number, $array) {
+    //At first - sort an array
+    sort($array);
+
+    //Find element
     foreach ($array as $element) {
-        if ($element == $number) {
+        if ($element > $number) {
+            echo 'not in array';
+            break;
+        } else if ($element == $number) {
             echo 'found!';
+            break;
+        } else {
+            echo 'not in array!';
+            break;
         }
     }
 }
