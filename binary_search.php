@@ -1,42 +1,41 @@
 <?php
 
 $array = [40, 16, 9, 28, 32, 12, 54, 8, 4, 2, 56];
-$number = 33;
+$number = 32;
 
 //At first - sort an array
 sort($array);
 
 function binarySearch($number, $array)
 {
-//Find mid element
+    //count array elements
+    //Verify for empty and 1
     $count = count($array);
-    if ($count <= 1) {
+    if ($count == 1) {
         if ($number == $array[0]) {
-            echo "found this is $array[0] \n";
-            exit();
+            return "found this is $array[0] \n";
         } else {
-            echo "element not found! \n";
-            exit();
+            return "element not found! \n";
         }
+    } else if ($count == 0) {
+        return "Empty Array! \n";
     }
+
+    //Find mid element
     $middleIndex = floor($count / 2);
     $middleElement = $array[$middleIndex];
 
+    //compare with number
     if ($number == $middleElement) {
-        echo "found this is $middleElement \n";
-        exit();
+        return "found this is $middleElement \n";
     }
 
-//compare with number
+    //Recursive cut
     if ($number > $middleElement) {
         $part = array_slice($array, $middleIndex);
-        echo "$number больше $middleElement \n";
-        var_dump($part);
         binarySearch($number, $part);
     } else {
         $part = array_slice($array, 0, $middleIndex);
-        echo "$number меньше $middleElement \n";
-        var_dump($part);
         binarySearch($number, $part);
     }
 }
